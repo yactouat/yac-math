@@ -24,3 +24,7 @@ my little math library
 
 
 ```
+
+## tests
+
+I use Jest and jest-theories for testing. You can run the tests with ```npm run test```.

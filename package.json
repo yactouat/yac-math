@@ -1,6 +1,6 @@
 {
   "name": "yac-math",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "my little math library",
   "main": "index.js",
   "scripts": {
@@ -21,9 +21,7 @@
     "url": "https://github.com/yactouat/yac-math/issues"
   },
   "devDependencies": {
+    "jest": "^27.0.6",
     "jest-theories": "^1.5.1"
-  },
-  "dependencies": {
-    "jest": "^27.0.6"
   }
 }
