@@ -4,7 +4,7 @@
   "description": "my little math library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "math",
@@ -19,5 +19,11 @@
   },
   "bugs": {
     "url": "https://github.com/yactouat/yac-math/issues"
+  },
+  "devDependencies": {
+    "jest-theories": "^1.5.1"
+  },
+  "dependencies": {
+    "jest": "^27.0.6"
   }
 }
