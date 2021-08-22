@@ -1,0 +1,23 @@
+{
+  "name": "yac-math",
+  "version": "1.0.0",
+  "description": "my little math library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "math",
+    "primes",
+    "helpers"
+  ],
+  "author": "Yacine Touati <yacine.touati.pro@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yactouat/yac-math.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yactouat/yac-math/issues"
+  }
+}
