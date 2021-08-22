@@ -1,5 +1,5 @@
 
-const {isEven, isPrime, isNaturalNumber} = require( "./index" );
+const {isEven, isPrime, isNaturalNumber, getPrimeFactorsList, getUniquePrimeFactorsList} = require( "./index" );
 const jestTheories = require( "jest-theories" );
  
 describe( "value is even", () => {
@@ -34,10 +34,17 @@ describe( "value is a natural number", () => {
  
 describe( "number is prime", () => {
     const theories = [
+        {input: 'x',  expected: false},
         {input: -3,  expected: false},
         {input: 0,  expected: false},
+        {input: 1,  expected: false},
+        {input: 2,  expected: true},
         {input: 3,  expected: true},
+        {input: 5,  expected: true},
+        {input: 11, expected: true},
         {input: 15, expected: false},
+        {input: 20, expected: false},
+        {input: 100, expected: false},
         {input: 45, expected: false},
         {input: 63, expected: false},
         {input: 73, expected: true},
@@ -52,10 +59,59 @@ describe( "number is prime", () => {
         {input: 47, expected: true},
         {input: 31, expected: true},
         {input: 11, expected: true},
-        {input: 13, expected: true}
+        {input: 13, expected: true},
+        // testing performance and loop iterations skipping with multiples of 5 on a very large number
+        {input: 949849845316494994989811984984983, expected: false},
+        {input: 949849845316494994989811984984980, expected: false},  
     ];
     jestTheories.default( 'the number {input} is a prime number => {expected}', theories, theory => {
         expect( isPrime( theory.input ) ).toBe( theory.expected );
 
+    });
+});
+
+describe( "prime factorization", () => {
+    const theories = [
+        {input: 'x',  expected: []},
+        {input: -3,  expected: []},
+        {input: -18,  expected: []},
+        {input: 0,  expected: []},
+        {input: 1,  expected: []},
+        {input: 1.35,  expected: []},
+        {input: 25.899,  expected: []},
+        {input: 75,  expected: [3,5,5]},
+        {input: 36,  expected: [2,2,3,3]},
+        {input: 30,  expected: [2,3,5]},
+        {input: 73,  expected: [73]},
+        {input: 126,  expected: [2,3,3,7]},
+        {input: 12,  expected: [2,2,3]},
+        {input: 18,  expected: [2,3,3]},
+        {input: 24,  expected: [2,2,2,3]},
+    ];
+    jestTheories.default( 'the prime factorization of {input} is {expected}', theories, theory => {
+        expect( getPrimeFactorsList( theory.input ) ).toStrictEqual( theory.expected );
+    });
+});
+
+describe( "prime factorization unique values", () => {
+    const theories = [
+        {input: 'x',  expected: []},
+        {input: -3,  expected: []},
+        {input: -18,  expected: []},
+        {input: 0,  expected: []},
+        {input: 1,  expected: []},
+        {input: 1.35,  expected: []},
+        {input: 25.899,  expected: []},
+        {input: 75,  expected: [3,5]},
+        {input: 36,  expected: [2,3]},
+        {input: 30,  expected: [2,3,5]},
+        {input: 73,  expected: [73]},
+        {input: 126,  expected: [2,3,7]},
+        {input: 12,  expected: [2,3]},
+        {input: 18,  expected: [2,3]},
+        {input: 24,  expected: [2,3]},
+    ];
+    jestTheories.default( 'the unique prime factors of {input} are {expected}', theories, theory => {
+        expect( getUniquePrimeFactorsList( theory.input ) ).toStrictEqual( theory.expected );
     });
 });
