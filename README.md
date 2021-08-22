@@ -10,6 +10,7 @@ my little math library
 
 #### returns boolean
 
+- ```isEven( value )```
 - ```isNaturalNumber( value )```
 - ```isPrimeNumber( value )```
 
@@ -19,7 +20,7 @@ my little math library
 
     const yacMath = require( 'yac-math' );
     // OR
-    const {isNaturalNumber, isPrimeNumber} = require( 'yac-math' );
+    const {isEven, isNaturalNumber, isPrimeNumber} = require( 'yac-math' );
 
 
 ```
