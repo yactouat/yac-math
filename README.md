@@ -16,6 +16,7 @@ my little math library
 #### returns boolean
 
 - ```checkIsFactor(nb1, nb2)``` => checks if input nb1 is a factor of input nb2
+- ```checkIsMultiple(nb1, nb2)``` => checks if input nb1 is a multiple of input nb2
 - ```isEven( value )```
 - ```isNaturalNumber( value )```
 - ```isPrimeNumber( value )```
