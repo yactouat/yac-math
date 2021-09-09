@@ -1,6 +1,6 @@
 # yac-math
 
-my little math library
+helper functions math library
 
 ## basic usage
 
