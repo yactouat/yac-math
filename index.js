@@ -24,6 +24,29 @@ const checkIsFactor = (nb1, nb2) => {
 
 /** 
 * 
+* @function checkIsMultiple (arrow func)
+*
+* @summary checks if input nb1 is a multiple of input nb2
+*
+* @param {nb1} value - the number to check
+* @param {nb2} value - the number checked against
+* @return {boolean} returns true if nb1 is a multiple of nb2
+* 
+*/
+const checkIsMultiple = (nb1, nb2) => {
+    // 0 is a multiple of every number
+    if ( nb2 === 0 && nb1 === 0 )
+        return nb1 === 0;
+    return !isNaN( nb1 ) 
+        && !isNaN( nb2 ) 
+        && Number.isInteger( nb1 ) 
+        && Number.isInteger( nb2 ) 
+        && nb2 !== 0 
+        && nb1 % nb2 === 0;
+}
+
+/** 
+* 
 * @function isEven (arrow func)
 *
 * @summary checks if a number is an even number
@@ -161,6 +184,7 @@ const getPrimeFactorsList = value => {
 
 module.exports = {
     checkIsFactor,
+    checkIsMultiple,
     isEven,
     isNaturalNumber,
     isPrime,

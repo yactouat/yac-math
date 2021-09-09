@@ -1,7 +1,25 @@
 
-const {isEven, isPrime, isNaturalNumber, getPrimeFactorsList, getUniquePrimeFactorsList} = require( "./index" );
+const {checkIsMultiple, isEven, isPrime, isNaturalNumber, getPrimeFactorsList, getUniquePrimeFactorsList} = require( "./index" );
 const jestTheories = require( "jest-theories" );
  
+describe( "value is a multiple", () => {
+    const theories = [
+        {input1: 64, input2: 32, expected: true},
+        {input1: 0, input2: 0, expected: true},
+        {input1: 0, input2: 1124123, expected: true},
+        {input1: 'x', input2: 2, expected: false},
+        {input1: 1, input2: 0,   expected: false},
+        {input1: 1.3, input2: 1, expected: false},
+        {input1: 500, input2: 5, expected: true},
+        {input1: -4, input2: -2,  expected: true},
+        {input1: -2, input2: 2,  expected: true},
+        {input1: 2, input2: 4,  expected: false}
+    ];
+    jestTheories.default( 'the value {input1} is a multiple of {input2} => {expected}', theories, theory => {
+        expect( checkIsMultiple( theory.input1, theory.input2 ) ).toBe( theory.expected );
+    });
+});
+
 describe( "value is even", () => {
     const theories = [
         // check out https://www.bbc.com/news/magazine-20559052 if you have a doubt about 0 being even
