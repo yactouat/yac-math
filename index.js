@@ -193,7 +193,7 @@ const getPrimeFactorsList = value => {
  * 
  */
 const getPercentageRepresentation=( nb1, nb2 ) => {
-    let result=(nb1/nb2)*100
+    let result=(nb1/nb2)*100;
     return result;
 };
 
@@ -206,6 +206,7 @@ module.exports = {
     isNaturalNumber,
     isPrime,
     getUniquePrimeFactorsList,
-    getPrimeFactorsList
+    getPrimeFactorsList,
+    getPercentageRepresentation
 }
 
