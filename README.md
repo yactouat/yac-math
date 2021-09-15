@@ -21,6 +21,10 @@ helper functions math library
 - ```isNaturalNumber( value )```
 - ```isPrimeNumber( value )```
 
+#### returns Number
+
+- ```getPercentageRepresentation(nb1, nb2)``` => gets what percentage of nb2 represents nb1
+
 ### importing and using
 
 ```javascript
@@ -32,6 +36,7 @@ helper functions math library
     // OR you can pick the functions you want
     const {isEven, isNaturalNumber, isPrimeNumber} = require( 'yac-math' );
     isPrimeNumber( 5 ); // => true
+    getPercentageRepresentation(2, 4); // => 50
 
 ```
 
