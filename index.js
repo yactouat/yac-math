@@ -178,6 +178,23 @@ const getPrimeFactorsList = value => {
             result.push( quotient );
     }
     return result;
+
+};
+
+/**
+ * 
+ * @function getPercentageRepresentation( nb1, nb2 ) (arrow func)
+ * 
+ * @summary returns a  value of what percentage of nb2 represents nb1 .
+
+ * 
+* @param {any} nb1,nb2 - the numbers to find percentage
+* @return {any} result , a variable where percentage is 
+ * 
+ */
+const getPercentageRepresentation=( nb1, nb2 ) => {
+    let result=(nb1/nb2)*100;
+    return result;
 };
 
 // console.log( getPrimeFactorsList( 24 ) );
@@ -189,6 +206,7 @@ module.exports = {
     isNaturalNumber,
     isPrime,
     getUniquePrimeFactorsList,
-    getPrimeFactorsList
+    getPrimeFactorsList,
+    getPercentageRepresentation
 }
 
