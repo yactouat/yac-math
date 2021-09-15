@@ -82,8 +82,8 @@ const isNaturalNumber = value => {
  *          a prime number is a natural number that has exactly two factors,
  *          meaning it is only divisible by 1 and itself
  * 
-* @param {any} value - the number to check, will return false if no number
-* @return {boolean} if the number is a natural number
+ * @param {any} value - the number to check, will return false if no number
+ * @return {boolean} if the number is a natural number
  * 
  */
 const isPrime = value => {
@@ -120,10 +120,9 @@ const isPrime = value => {
  * @function getUniquePrimeFactorsList (arrow func)
  * 
  * @summary returns a list of unique prime factors for the given input value
-
  * 
-* @param {any} value - the number to check, will return false if no number
-* @return {Array} an array containing the list of the prime factors | an empty array if the input value is not a natural number
+ * @param {any} value - the number to check, will return false if no number
+ * @return {Array} an array containing the list of the prime factors | an empty array if the input value is not a natural number
  * 
  */
 const getUniquePrimeFactorsList = value => {
@@ -144,10 +143,9 @@ const getUniquePrimeFactorsList = value => {
  * @function getPrimeFactorsList (arrow func)
  * 
  * @summary returns a list of prime factors for the given input value
-
  * 
-* @param {any} value - the number to check, will return false if no number
-* @return {Array} an array containing the list of the prime factors, their product is equal to the input value | an empty array if the input value is not a natural number
+ * @param {any} value - the number to check, will return false if no number
+ * @return {Array} an array containing the list of the prime factors, their product is equal to the input value | an empty array if the input value is not a natural number
  * 
  */
 const getPrimeFactorsList = value => {
@@ -185,15 +183,21 @@ const getPrimeFactorsList = value => {
  * 
  * @function getPercentageRepresentation( nb1, nb2 ) (arrow func)
  * 
- * @summary returns a  value of what percentage of nb2 represents nb1 .
-
+ * @summary returns a value of what percentage of nb2 represents nb1;
+ *          rounded to 2 decimals for readability
  * 
-* @param {any} nb1,nb2 - the numbers to find percentage
-* @return {any} result , a variable where percentage is 
+ * @param {any} nb1,nb2 - the numbers to find percentage
+ * @return {any} result , a variable where percentage is 
+ * @throws "Division by zero impossible !"
+ * 
+ * TODO possibility to force round down or up
+ * TODO possibility to choose number of decimal points in output
  * 
  */
-const getPercentageRepresentation=( nb1, nb2 ) => {
-    let result=(nb1/nb2)*100;
+const getPercentageRepresentation = ( nb1, nb2 ) => {
+    if ( nb2 == 0 )
+        throw "Division by zero impossible !";
+    let result = Number(((nb1/nb2) * 100).toFixed(2));
     return result;
 };
 

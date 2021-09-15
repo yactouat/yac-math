@@ -1,5 +1,13 @@
 
-const {checkIsMultiple, isEven, isPrime, isNaturalNumber, getPrimeFactorsList, getUniquePrimeFactorsList} = require( "./index" );
+const {
+    checkIsMultiple, 
+    isEven, 
+    isPrime, 
+    isNaturalNumber, 
+    getPrimeFactorsList, 
+    getUniquePrimeFactorsList,
+    getPercentageRepresentation
+} = require( "./index" );
 const jestTheories = require( "jest-theories" );
  
 describe( "value is a multiple", () => {
@@ -133,3 +141,35 @@ describe( "prime factorization unique values", () => {
         expect( getUniquePrimeFactorsList( theory.input ) ).toStrictEqual( theory.expected );
     });
 });
+
+describe( "value of what percentage of nb2 represents nb1", () => {
+    
+    const theories = [
+        {input: ['x', 2],  expected: NaN},
+        {input: [-1, 2],  expected: -50},
+        {input: [9, -18],  expected: -50},
+        {input: [1, 1.35],  expected: 74.07},
+        {input: [25.899, 5],  expected: 517.98},
+        {input: [75, 100],  expected: 75},
+        {input: [6, 36],  expected: 16.67},
+        {input: [5, 30],  expected: 16.67},
+        {input: [3, 73],  expected: 4.11},
+        {input: [12, 126],  expected: 9.52},
+        {input: [3, 12],  expected: 25},
+        {input: [2, 18],  expected: 11.11},
+        {input: [24, 12],  expected: 200},
+    ];
+    jestTheories.default( '{input} ratio is {expected}', theories, theory => {
+        expect( getPercentageRepresentation( theory.input[0], theory.input[1] ) ).toStrictEqual( theory.expected );
+    });
+
+    test("cant get a percentage out of 0", () => {
+        const getPercentageOutOfZero = () => {
+            getPercentageRepresentation(5, 0);
+        };
+        expect(getPercentageOutOfZero).toThrowError("Division by zero impossible !");
+    });
+
+});
+
+
