@@ -6,7 +6,8 @@ const {
     isNaturalNumber, 
     getPrimeFactorsList, 
     getUniquePrimeFactorsList,
-    getPercentageRepresentation
+    getPercentageRepresentation,
+    getUnitRatioOfNb1ToNb2
 } = require( "./index" );
 const jestTheories = require( "jest-theories" );
  
@@ -168,6 +169,140 @@ describe( "value of what percentage of nb2 represents nb1", () => {
             getPercentageRepresentation(5, 0);
         };
         expect(getPercentageOutOfZero).toThrowError("Division by zero impossible !");
+    });
+
+    test("cant pass an expression as nb2", () => {
+        expect(getPercentageRepresentation(50, (10 * 10))).toBe(50);
+        expect(getPercentageRepresentation(99, (500 + 51))).toBe(17.97);
+    });
+
+});
+
+describe( "ratio of 1 nb1 unit to n units of nb2", () => {
+    
+    describe("ratio when nb1 is bigger than nb2", () => {
+        const theories = [
+            {input: [3, 2],  expected: "1:0.67"},
+            {input: [24, 4],  expected: "1:0.17"},
+            {input: [24, 3],  expected: "1:0.13"},
+        ];
+        jestTheories.default( "ratio between {input} is {expected} for 1 unit of nb1", theories, theory => {
+            expect( getUnitRatioOfNb1ToNb2( theory.input[0], theory.input[1] ) ).toEqual( theory.expected );
+        });
+    }); 
+
+    describe("ratio when nb1 is smaller than nb2", () => {
+        const theories = [
+            {input: [3, 24],  expected: "1:8.00"},
+            {input: [2, 3],  expected: "1:1.50"},
+            {input: [4, 24],  expected: "1:6.00"},
+        ];
+        jestTheories.default( "ratio between {input} is {expected} for 1 unit of nb1", theories, theory => {
+            expect( getUnitRatioOfNb1ToNb2( theory.input[0], theory.input[1] ) ).toEqual( theory.expected );
+        });
+    }); 
+    describe("ratio when nb1 is smaller than 1", () => {
+        const theories = [
+            {input: [0.3, 24],  expected: "1:80.00"},
+            {input: [0.2, 3],  expected: "1:15.00"},
+            {input: [0.44, 24],  expected: "1:54.55"},
+        ];
+        jestTheories.default( "ratio between {input} is {expected} for 1 unit of nb1", theories, theory => {
+            expect( getUnitRatioOfNb1ToNb2( theory.input[0], theory.input[1] ) ).toEqual( theory.expected );
+        });
+    }); 
+
+    test("ratio when nb1 is equal to nb2", () => {
+        expect( getUnitRatioOfNb1ToNb2( 2, 2 ) ).toEqual( "1:1.00" );
+    }); 
+
+    test("ratio when nb1 is 0", () => {
+        const getRatioWhenNb1Is0 = () => {
+            getUnitRatioOfNb1ToNb2(0, 5);
+        };
+        expect(getRatioWhenNb1Is0).toThrowError("No ratio possible when left hand value is zero");
+    }); 
+
+    test("ratio when nb2 is not a number", () => {
+        const getRatioWhenNb2IsNan = () => {
+            getUnitRatioOfNb1ToNb2(5, 'x');
+        };
+        expect(getRatioWhenNb2IsNan).toThrowError("A ratio can only work with numbers");
+    }); 
+
+
+    test("return value is a string formatted in terms of '1:n'", () => {
+        // arrange
+        const expected = "1:2.00";
+        // act
+        const actual = getUnitRatioOfNb1ToNb2(2,4);
+        // assert
+        expect(actual).toEqual(expected);
+    }); 
+
+    describe("return value right hand has no more than 2 decimals by default", () => {
+        const theories = [
+            {input: [2, 4],  expected: 2},
+            {input: [0.44, 24],  expected: 2},
+        ];
+        jestTheories.default( "ratio number of decimals between {input} is {expected} for 1 unit of nb1 is expected to be 2", theories, theory => {
+            expect( getUnitRatioOfNb1ToNb2( theory.input[0], theory.input[1] ).split('.')[1].length )
+                .toEqual( theory.expected );
+        });
+    }); 
+
+    test("ratio when nb2 is 0", () => {
+         // arrange
+         const expected = "1:0.00";
+         // act
+         const actual = getUnitRatioOfNb1ToNb2(2,0);
+         // assert
+         expect(actual).toEqual(expected);
+    }); 
+
+    test("ratio when nb2 is a negative number and nb1 is positive", () => {
+         // arrange
+         const expected = "1:-1.00";
+         // act
+         const actual = getUnitRatioOfNb1ToNb2(2,-2);
+         // assert
+         expect(actual).toEqual(expected);
+    }); 
+
+    test("ratio when nb1 is a negative number and nb2 is positive", () => {
+         // arrange
+         const expected = "1:-1.00";
+         // act
+         const actual = getUnitRatioOfNb1ToNb2(-2,2);
+         // assert
+         expect(actual).toEqual(expected);
+    }); 
+
+    test("ratio when both numbers are negative and nb1 is smaller", () => {
+         // arrange
+         const expected = "1:2.00";
+         // act
+         const actual = getUnitRatioOfNb1ToNb2(-2,-4);
+         // assert
+         expect(actual).toEqual(expected);
+    });
+
+    test("ratio when both numbers are negative and nb1 is bigger", () => {
+        // arrange
+        const expected = "1:1.50";
+        // act
+        const actual = getUnitRatioOfNb1ToNb2(-4,-6);
+        // assert
+        expect(actual).toEqual(expected);
+   });
+
+   test("ratio when both numbers are negative and equal to each other", () => {
+        // arrange
+        const expected = "1:1.00";
+        // act
+        const actual = getUnitRatioOfNb1ToNb2(-4,-4);
+        // assert
+        expect(actual).toEqual(expected);
     });
 
 });

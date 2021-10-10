@@ -190,8 +190,8 @@ const getPrimeFactorsList = value => {
  * @return {any} result , a variable where percentage is 
  * @throws "Division by zero impossible !"
  * 
- * TODO possibility to force round down or up
- * TODO possibility to choose number of decimal points in output
+ * TODO possibility of forcing round down or up
+ * TODO possibility of choosing number of decimal points in output
  * 
  */
 const getPercentageRepresentation = ( nb1, nb2 ) => {
@@ -201,7 +201,32 @@ const getPercentageRepresentation = ( nb1, nb2 ) => {
     return result;
 };
 
-// console.log( getPrimeFactorsList( 24 ) );
+/**
+ * 
+ * @function getUnitRatioOfNb1ToNb2( nb1, nb2 ) (arrow func)
+ * 
+ * @summary returns how many items there is for one nb1 unit per nb2 unit,
+ *          as in "for 1 unit of nb1, there are n units of nb2"
+ * 
+ * @param {any} nb1,nb2 - the numbers to compare to get ratio
+ * @return {string} result, the ratio expressed in terms of '1:n' 
+ * 
+ * @throws "No ratio possible when left hand value is zero"
+ * @throws "A ratio can only work with numbers"
+ * 
+ * TODO possibility of forcing round down or up
+ * TODO possibility of choosing number of decimal points in output
+ * 
+ */
+const getUnitRatioOfNb1ToNb2 = (nb1, nb2) => {
+    if (isNaN(nb1) || isNaN(nb2))
+        throw "A ratio can only work with numbers";
+    if (nb1 === 0)
+        throw "No ratio possible when left hand value is zero";
+    if (nb2 === 0)
+        return "1:0.00";
+    return `1:${Number(nb2/nb1).toFixed(2)}`;
+}
 
 module.exports = {
     checkIsFactor,
@@ -211,6 +236,7 @@ module.exports = {
     isPrime,
     getUniquePrimeFactorsList,
     getPrimeFactorsList,
-    getPercentageRepresentation
+    getPercentageRepresentation,
+    getUnitRatioOfNb1ToNb2
 }
 
