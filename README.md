@@ -25,6 +25,10 @@ helper functions math library
 
 - ```getPercentageRepresentation(nb1, nb2)``` => gets what percentage of nb2 represents nb1
 
+#### returns String
+
+- `getUnitRatioOfNb1ToNb2(nb1, nb2)` => gets a string representation of the ratio of one unit of nb1 to nb2
+
 ### importing and using
 
 ```javascript
