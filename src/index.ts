@@ -98,8 +98,6 @@ export const isPrime = (nb: number): boolean => {
 
 /**
  *
- * TODO test
- *
  * gets a string representation, in hours and minutes, of a decimal number
  *
  * @param {number} timeInDecimal

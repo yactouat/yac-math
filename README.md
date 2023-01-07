@@ -61,6 +61,12 @@ getPercentageRepresentation(2, 4); // => 50
 
 `npm run test` => runs the jest tests. Tests contain theories.
 
+### publish
+
+`npm run build` ...
+
+`npm publish` => publishes the package to npm
+
 ## Contributors
 
 A big thanks goes to the contributors of this project:
