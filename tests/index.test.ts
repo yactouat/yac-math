@@ -1,5 +1,6 @@
 const jestTheories = require("jest-theories");
 import {
+  getDecimalToHoursAndMinutes,
   getPercentageRepresentation,
   getPrimeFactorization,
   getUniquePrimeFactors,
@@ -248,6 +249,7 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
       }
     );
   });
+
   describe("ratio when nb1 is smaller than 1", () => {
     const theories = [
       { input: [0.3, 24], expected: "1:80.00" },
@@ -361,5 +363,91 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
     const actual = getUnitRatioOfNb1ToNb2(-4, -4);
     // assert
     expect(actual).toEqual(expected);
+  });
+
+  test("get hours/minutes from decimal when input decimal is negative", () => {
+    const getHMinsFromDecimalWhenInputNegative = () => {
+      getDecimalToHoursAndMinutes(-1);
+    };
+    expect(getHMinsFromDecimalWhenInputNegative).toThrowError(
+      "Input has to be a positive number !"
+    );
+  });
+
+  test("get hours/minutes from decimal when input decimal is 0", () => {
+    const getHMinsFromDecimalWhenInputIsZero = () => {
+      getDecimalToHoursAndMinutes(0);
+    };
+    expect(getHMinsFromDecimalWhenInputIsZero).toThrowError(
+      "Input has to be a positive number !"
+    );
+  });
+
+  describe("get hours/minutes with hours less than 10", () => {
+    const theories = [
+      { input: 1.5, expected: "01:30" },
+      { input: 1.25, expected: "01:15" },
+      { input: 1.75, expected: "01:45" },
+    ];
+    jestTheories.default(
+      "hours and minutes representation of {input} is expected to be {expected}",
+      theories,
+      (theory: { input: number; expected: string }) => {
+        expect(getDecimalToHoursAndMinutes(theory.input)).toEqual(
+          theory.expected
+        );
+      }
+    );
+  });
+
+  describe("get hours/minutes with less than an hour", () => {
+    const theories = [
+      { input: 0.5, expected: "00:30" },
+      { input: 0.25, expected: "00:15" },
+      { input: 0.75, expected: "00:45" },
+    ];
+    jestTheories.default(
+      "hours and minutes representation of {input} is expected to be {expected}",
+      theories,
+      (theory: { input: number; expected: string }) => {
+        expect(getDecimalToHoursAndMinutes(theory.input)).toEqual(
+          theory.expected
+        );
+      }
+    );
+  });
+
+  describe("get hours/minutes with whole numbers", () => {
+    const theories = [
+      { input: 1, expected: "01:00" },
+      { input: 2, expected: "02:00" },
+      { input: 3, expected: "03:00" },
+    ];
+    jestTheories.default(
+      "hours and minutes representation of {input} is expected to be {expected}",
+      theories,
+      (theory: { input: number; expected: string }) => {
+        expect(getDecimalToHoursAndMinutes(theory.input)).toEqual(
+          theory.expected
+        );
+      }
+    );
+  });
+
+  describe("get hours/minutes with hours starting 10", () => {
+    const theories = [
+      { input: 11.5, expected: "11:30" },
+      { input: 23.25, expected: "23:15" },
+      { input: 120.75, expected: "120:45" },
+    ];
+    jestTheories.default(
+      "hours and minutes representation of {input} is expected to be {expected}",
+      theories,
+      (theory: { input: number; expected: string }) => {
+        expect(getDecimalToHoursAndMinutes(theory.input)).toEqual(
+          theory.expected
+        );
+      }
+    );
   });
 });

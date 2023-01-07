@@ -109,7 +109,7 @@ export const isPrime = (nb: number): boolean => {
  *
  */
 export const getDecimalToHoursAndMinutes = (timeInDecimal: number) => {
-  if (timeInDecimal < 0) {
+  if (timeInDecimal <= 0) {
     throw "Input has to be a positive number !";
   }
   let hours = Math.floor(timeInDecimal);
@@ -118,7 +118,7 @@ export const getDecimalToHoursAndMinutes = (timeInDecimal: number) => {
   let minutesStr = minutes.toString();
   if (hours < 10) hoursStr = "0" + hours;
   if (minutes < 10) minutesStr = "0" + minutes;
-  return hours + ":" + minutes;
+  return hoursStr + ":" + minutesStr;
 };
 
 /**
