@@ -228,6 +228,17 @@ const getUnitRatioOfNb1ToNb2 = (nb1, nb2) => {
     return `1:${Number(nb2/nb1).toFixed(2)}`;
 }
 
+const decimalToHoursAndMinutes = (timeInDecimal) => {
+    if (isNaN(timeInDecimal) || timeInDecimal < 0 )
+        throw "input has to be a positive number";
+    let hours = Math.floor(timeInDecimal)
+    let minutes = Math.round((timeInDecimal - hours)*60) 
+    if (hours < 10) hours = '0' + hours
+    if (minutes < 10) minutes = '0' + minutes
+    return hours + ":" + minutes
+}
+
+
 module.exports = {
     checkIsFactor,
     checkIsMultiple,
