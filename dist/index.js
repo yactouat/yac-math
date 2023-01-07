@@ -5,8 +5,8 @@ exports.getUnitRatioOfNb1ToNb2 = exports.getUniquePrimeFactors = exports.getPrim
  *
  * checks if input nb1 is a factor of input nb2
  *
- * @param {number} nb1 the number divisor
- * @param {number} nb2 the possible multiple to check
+ * @param {number} nb1 the possible factor to check
+ * @param {number} nb2 the number to check
  * @return {boolean} returns true if nb1 is a factor of nb2
  *
  */
