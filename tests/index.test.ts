@@ -6,6 +6,7 @@ import {
   getUniquePrimeFactors,
   getUnitRatioOfNb1ToNb2,
   isEven,
+  isFactor,
   isMultiple,
   isNaturalNumber,
   isPrime,
@@ -445,6 +446,33 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
       theories,
       (theory: { input: number; expected: string }) => {
         expect(getDecimalToHoursAndMinutes(theory.input)).toEqual(
+          theory.expected
+        );
+      }
+    );
+  });
+
+  describe("is factor with number 12", () => {
+    const theories = [
+      { input: [0, 12], expected: false },
+      { input: [1, 12], expected: true },
+      { input: [2, 12], expected: true },
+      { input: [3, 12], expected: true },
+      { input: [4, 12], expected: true },
+      { input: [5, 12], expected: false },
+      { input: [6, 12], expected: true },
+      { input: [7, 12], expected: false },
+      { input: [8, 12], expected: false },
+      { input: [9, 12], expected: false },
+      { input: [10, 12], expected: false },
+      { input: [11, 12], expected: false },
+      { input: [12, 12], expected: true },
+    ];
+    jestTheories.default(
+      "{input} are factors: {expected}",
+      theories,
+      (theory: { input: [number, number]; expected: boolean }) => {
+        expect(isFactor(theory.input[0], theory.input[1])).toEqual(
           theory.expected
         );
       }
