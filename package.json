@@ -1,6 +1,6 @@
 {
   "name": "yac-math",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "helper functions math library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

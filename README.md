@@ -25,7 +25,7 @@ helper functions math library
 - `isFactor(nb1, nb2)` => checks if input nb1 is a factor of input nb2
 - `isEven( value )`
 - `isNaturalNumber( value )`
-- `isPrimeNumber( value )`
+- `isPrime( value )`
 
 #### returns Number
 
@@ -41,11 +41,11 @@ helper functions math library
 ```javascript
 // you can use the default export
 const yacMath = require("yac-math");
-yacMath.isPrimeNumber(5); // => true
+yacMath.isPrime(5); // => true
 
 // OR you can pick the functions you want
-const { isEven, isNaturalNumber, isPrimeNumber } = require("yac-math");
-isPrimeNumber(5); // => true
+const { isEven, isNaturalNumber, isPrime } = require("yac-math");
+isPrime(5); // => true
 getPercentageRepresentation(2, 4); // => 50
 ```
 
