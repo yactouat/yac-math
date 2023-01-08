@@ -10,6 +10,7 @@ import {
   isMultiple,
   isNaturalNumber,
   isPrime,
+  factorial,
 } from "./../src/index";
 
 describe("value is a multiple", () => {
@@ -476,6 +477,43 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
           theory.expected
         );
       }
+    );
+  });
+});
+
+describe("factorial of a number", () => {
+  const theories = [
+    { input: 0, expected: 1 },
+    { input: -0, expected: 1 },
+    { input: 1, expected: 1 },
+    { input: 3, expected: 6 },
+    { input: 5, expected: 120 },
+    { input: 8, expected: 40320 },
+    { input: 12, expected: 479001600 },
+  ];
+  jestTheories.default(
+    "factorial of the value {input} => {expected}",
+    theories,
+    (theory: { input: number; expected: number }) => {
+      expect(factorial(theory.input as number)).toBe(theory.expected);
+    }
+  );
+  
+  test("cant get factorial for negative numbers", () => {
+    const testFactorial = () => {
+      factorial(-1);
+    };
+    expect(testFactorial).toThrowError(
+      "Factorial for negative numbers is undefined!"
+    );
+  });
+  
+  test("cant get factorial for decimal numbers", () => {
+    const testFactorial = () => {
+      factorial(17.5);
+    };
+    expect(testFactorial).toThrowError(
+      "Factorial for decimal numbers is undefined!"
     );
   });
 });
