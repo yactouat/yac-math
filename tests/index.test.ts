@@ -484,6 +484,7 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
 describe("factorial of a number", () => {
   const theories = [
     { input: 0, expected: 1 },
+    { input: -0, expected: 1 },
     { input: 1, expected: 1 },
     { input: 3, expected: 6 },
     { input: 5, expected: 120 },
@@ -497,4 +498,16 @@ describe("factorial of a number", () => {
       expect(factorial(theory.input as number)).toBe(theory.expected);
     }
   );
+  
+  it('should throw with negative numbers', () => {
+  expect(() => {
+    factorial(-1)
+  }).toThrow()
+  })
+  
+  it('should throw with decimal numbers', () => {
+  expect(() => {
+    factorial(17.5)
+  }).toThrow()
+  })
 });
