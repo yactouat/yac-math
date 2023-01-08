@@ -481,7 +481,6 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
   });
 });
 
-
 describe("factorial of a number", () => {
   const theories = [
     { input: 0, expected: 1 },
