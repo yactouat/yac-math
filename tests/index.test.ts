@@ -499,15 +499,21 @@ describe("factorial of a number", () => {
     }
   );
   
-  it('should throw with negative numbers', () => {
-  expect(() => {
-    factorial(-1)
-  }).toThrow()
-  })
+  test("cant get factorial for negative numbers", () => {
+    const testFactorial = () => {
+      factorial(-1);
+    };
+    expect(testFactorial).toThrowError(
+      "Factorial for negative numbers is undefined!"
+    );
+  });
   
-  it('should throw with decimal numbers', () => {
-  expect(() => {
-    factorial(17.5)
-  }).toThrow()
-  })
+  test("cant get factorial for decimal numbers", () => {
+    const testFactorial = () => {
+      factorial(17.5);
+    };
+    expect(testFactorial).toThrowError(
+      "Factorial for decimal numbers is undefined!"
+    );
+  });
 });
