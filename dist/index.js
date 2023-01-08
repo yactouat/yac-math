@@ -1,6 +1,30 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUnitRatioOfNb1ToNb2 = exports.getUniquePrimeFactors = exports.getPrimeFactorization = exports.getPercentageRepresentation = exports.getDecimalToHoursAndMinutes = exports.isPrime = exports.isNaturalNumber = exports.isMultiple = exports.isEven = exports.isFactor = void 0;
+exports.getUnitRatioOfNb1ToNb2 = exports.getUniquePrimeFactors = exports.getPrimeFactorization = exports.getPercentageRepresentation = exports.getDecimalToHoursAndMinutes = exports.isPrime = exports.isNaturalNumber = exports.isMultiple = exports.isEven = exports.isFactor = exports.factorial = void 0;
+/**
+ * returns factorial of the given number
+ *
+ * @param {number} nb base of the factorial
+ *
+ * @return {number} for whole numbers equal to or greater than 0
+ *
+ * @throws "Factorial for negative numbers is undefined!"
+ * @throws "Factorial for decimal numbers is undefined!"
+ */
+const factorial = (nb) => {
+    if (nb < 0)
+        throw "Factorial for negative numbers is undefined!";
+    if (nb % 1 != 0)
+        throw "Factorial for decimal numbers is undefined!";
+    let base = nb;
+    let fact = 1;
+    while (base >= 1) {
+        fact = fact * base;
+        base--;
+    }
+    return fact;
+};
+exports.factorial = factorial;
 /**
  *
  * checks if input nb1 is a factor of input nb2

@@ -1,4 +1,15 @@
 /**
+ * returns factorial of the given number
+ *
+ * @param {number} nb base of the factorial
+ *
+ * @return {number} for whole numbers equal to or greater than 0
+ *
+ * @throws "Factorial for negative numbers is undefined!"
+ * @throws "Factorial for decimal numbers is undefined!"
+ */
+export declare const factorial: (nb: number) => number;
+/**
  *
  * checks if input nb1 is a factor of input nb2
  *
