@@ -15,7 +15,7 @@ helper functions math library
 
 ### available methods
 
-#### returns Array
+#### returns array
 
 - `getUniquePrimeFactors(nb)` => returns a list of unique prime factors for the given input value
 - `getPrimeFactorization(nb)` => returns a list of prime factors for the given input value, their product is equal to the input value
@@ -27,14 +27,17 @@ helper functions math library
 - `isNaturalNumber(nb)`
 - `isPrime(nb)`
 
-#### returns Number
+#### returns number
 
 - `factorial(nb)` => returns the factorial of the given input nb
 - `getPercentageRepresentation(nb1, nb2)` => gets what percentage of nb2 represents nb1
 
-#### returns String
+#### returns object
 
-- `getDecimalToHoursAndMinutes` => converts a decimal number to a string representation of hours and minutes
+- `getDecimalToHoursAndMinutes` => converts a decimal number to an object representation of hours and minutes
+
+#### returns string
+
 - `getUnitRatioOfNb1ToNb2(nb1, nb2)` => gets a string representation of the ratio of one unit of nb1 to nb2
 
 ### importing and using
