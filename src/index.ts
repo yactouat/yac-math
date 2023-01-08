@@ -250,3 +250,53 @@ export const isPrime = (nb: number): boolean => {
   }
   return false;
 };
+
+/**
+ * returns all combinations of factors for the given number
+ * but [n1, n2] = [n2, n1] and only one is included
+ *
+ * @param {number} nb we will look for factors of this number
+ *
+ * @return {number[][]} factor combinations
+ */
+export const getAllFactorizations = (nb: number): number[][] => {
+  let result: number[][] = [];
+  if ( (nb > 1) && (nb % 1 == 0) ) {
+// only check for the first half of numbers, saves time  
+    let checker = ~~(nb / 2);
+    while (checker > 0) {
+      if (nb % checker === 0) {
+        result.push([checker, (nb / checker)]);
+      }
+      checker--;
+    }
+// the part below makes sure we don't repeat factor combinations, since [n1, n2] is same as [n2, n1]
+    if (result.length > 2) {
+      result = result.slice(-((result.length / 2)+1));
+    }
+  }
+// implementation for negative numbers  
+  else if ( (nb < -1) && (nb % 1 == 0) ) {
+    let checker = ~~((nb / (-2)));
+    while (checker > 0) {
+      if (nb % checker === 0) {
+        result.push([checker, (nb / checker)]);
+        result.push([(checker*(-1)), ((nb / checker)*(-1))]);
+      }
+      checker--;
+    }
+// the part below makes sure we don't repeat factor combinations, [n1, n2] = [n2, n1]   
+      let slicer = ((result.length / 2) % 2) === 0
+      if (slicer) {
+        result = result.slice(-((result.length / 2)+2));
+      }
+      else {
+        result = result.slice(-((result.length / 2)+1));
+      }
+// [n1, -n1] and [-n1, n1] are the same, so we only want to keep one of those
+      if (result[0][0] == result[1][1]) {
+        result = result.slice(-(result.length-1));
+      }
+  }
+  return result
+}

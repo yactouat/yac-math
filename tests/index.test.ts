@@ -12,6 +12,7 @@ import {
   isPrime,
   factorial,
   HoursMinutes,
+  getAllFactorizations,
 } from "./../src/index";
 
 describe("value is a multiple", () => {
@@ -576,4 +577,32 @@ describe("factorial of a number", () => {
       "Factorial for decimal numbers is undefined!"
     );
   });
+});
+
+describe("all factors of number", () => {
+  const theories = [
+    { input: 0, expected: [] },
+    { input: 1, expected: [] },
+    { input: 2, expected: [[1, 2]] },
+    { input: 4, expected: [[2, 2], [1, 4]] },
+    { input: 6, expected: [[2, 3], [1, 6]] },
+    { input: 8, expected: [[2, 4], [1, 8]] },
+    { input: 16, expected: [[4, 4], [2, 8], [1, 16]] },
+    { input: 32, expected: [[4, 8], [2, 16], [1, 32]] },
+    { input: 64, expected: [[8, 8], [4, 16], [2, 32], [1, 64]] },
+    { input: -2, expected: [[1, -2], [-1, 2]]},
+    { input: -4, expected: [[-2, 2], [1, -4], [-1, 4]]},
+    { input: -6, expected: [[2, -3], [-2, 3], [1, -6], [-1, 6]]},
+    { input: -8, expected: [[2, -4], [-2, 4], [1, -8], [-1, 8]]},
+    { input: -16, expected: [[-4, 4], [2, -8], [-2, 8], [1, -16], [-1, 16]]},
+    { input: -32, expected: [[4, -8], [-4, 8], [2, -16], [-2, 16], [1, -32], [-1, 32]]},
+    { input: -64, expected: [[-8, 8], [4, -16], [-4, 16], [2, -32], [-2, 32], [1, -64], [-1, 64]]},
+  ];
+  jestTheories.default(
+    "factors of number {input} => {expected}",
+    theories,
+    (theory: { input: number; expected: number[][] }) => {
+      expect(getAllFactorizations(theory.input as number)).toStrictEqual(theory.expected);
+    }
+  );
 });
