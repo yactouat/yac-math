@@ -17,6 +17,7 @@ export const isFactor = (nb1: number, nb2: number): boolean => {
   );
 };
 
+
 /**
  *
  * checks if a number is an even number
@@ -219,3 +220,23 @@ export const getUnitRatioOfNb1ToNb2 = (nb1: number, nb2: number): string => {
   if (nb2 === 0) return "1:0.00";
   return `1:${Number(nb2 / nb1).toFixed(2)}`;
 };
+
+/**
+ * returns factorial of the given number
+ *
+ * @param {number} nb1 base of the factorial
+ *
+ * @return {number} for whole numbers equal to or greater than 0
+ * @return {undefined} for negative numbers or decimal numbers
+ */
+export const factorial = (nb: number): number => {
+  if (nb < 0) throw "Factorial for negative numbers is undefined!";
+  if (nb % 1 != 0) throw "Factorial for decimal numbers is undefined!";
+  let base = nb;
+  let fact = 1;
+  while (base >= 1) {
+    fact = fact * base;
+    base--;
+  }
+  return fact;
+}
