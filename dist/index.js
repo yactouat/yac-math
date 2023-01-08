@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUnitRatioOfNb1ToNb2 = exports.getUniquePrimeFactors = exports.getPrimeFactorization = exports.getPercentageRepresentation = exports.getDecimalToHoursAndMinutes = exports.isPrime = exports.isNaturalNumber = exports.isMultiple = exports.isEven = exports.isFactor = exports.factorial = void 0;
+exports.isPrime = exports.isNaturalNumber = exports.isMultiple = exports.isEven = exports.isFactor = exports.getUnitRatioOfNb1ToNb2 = exports.getUniquePrimeFactors = exports.getPrimeFactorization = exports.getPercentageRepresentation = exports.getDecimalToHoursAndMinutes = exports.factorial = void 0;
 /**
  * returns factorial of the given number
  *
@@ -27,111 +27,11 @@ const factorial = (nb) => {
 exports.factorial = factorial;
 /**
  *
- * checks if input nb1 is a factor of input nb2
- *
- * @param {number} nb1 the possible factor to check
- * @param {number} nb2 the number to check
- * @return {boolean} returns true if nb1 is a factor of nb2
- *
- */
-const isFactor = (nb1, nb2) => {
-    // 0 cannot be a factor of any number except for 0
-    if (nb2 === 0 && nb1 === 0) {
-        return true;
-    }
-    return (Number.isInteger(nb1) && Number.isInteger(nb2) && nb1 > 0 && nb2 % nb1 === 0);
-};
-exports.isFactor = isFactor;
-/**
- *
- * checks if a number is an even number
- *
- * @param {number} nb the number to check
- * @return {boolean} if the number is an even number
- *
- */
-const isEven = (nb) => {
-    return (0, exports.isFactor)(2, nb);
-};
-exports.isEven = isEven;
-/**
- *
- * checks if input nb1 is a multiple of input nb2
- *
- * @param {number} nb1 the possible multiple to check
- * @param {number} nb2 the possible factor to check
- * @return {boolean} returns true if nb1 is a multiple of nb2
- *
- */
-const isMultiple = (nb1, nb2) => {
-    return (0, exports.isFactor)(nb2, nb1);
-};
-exports.isMultiple = isMultiple;
-/**
- *
- * checks if a number is a natural number
- *
- * a natural number is any positive integer > 0
- *
- * @param {number} nb the number to check
- * @return {boolean} if the number is a natural number
- *
- */
-const isNaturalNumber = (nb) => {
-    return nb > 0 && Number.isInteger(nb);
-};
-exports.isNaturalNumber = isNaturalNumber;
-/**
- *
- * checks if a number is a prime number,
- *
- * a prime number is a natural number that has exactly two factors,
- * meaning it is only divisible by 1 and itself
- *
- * @param {number} nb the number to check, will return false if no number
- * @return {boolean} if the number is a natural number
- *
- */
-const isPrime = (nb) => {
-    if ((0, exports.isNaturalNumber)(nb)) {
-        // 1 is not a prime number
-        if (nb === 1)
-            return false;
-        // every even number that is not 2 is not prime
-        if (nb > 2 && (0, exports.isEven)(nb))
-            return false;
-        /**
-         *  if nb is a multiple of 5, it is not prime
-         *  we add this common check for performance reason because it helps us avoid some loop iterations
-         * */
-        if (nb > 5 && (0, exports.isMultiple)(nb, 5))
-            return false;
-        /**
-         *  every natural number has at least 2 factors, 1 and itself
-         *  this is why we start the counter at 2 in the below loop
-         * */
-        let numberOfFactors = 2;
-        for (let i = 2; i < nb; i++) {
-            // there's no need to continue the loop if we already have more than 2 factors
-            if (numberOfFactors > 2)
-                break;
-            if ((0, exports.isFactor)(i, nb)) {
-                numberOfFactors++;
-            }
-        }
-        // checking primality by assessing that number of factors is still 2 after the loop
-        return numberOfFactors === 2;
-    }
-    return false;
-};
-exports.isPrime = isPrime;
-/**
- *
  * gets a string representation, in hours and minutes, of a decimal number
  *
  * @param {number} timeInDecimal
  *
- * @return {string} the hours:minutes string representation of the input decimal number
+ * @return {number} the hours:minutes representation of the input decimal number
  * @throws "Input has to be a positive number !"
  *
  */
@@ -140,14 +40,11 @@ const getDecimalToHoursAndMinutes = (timeInDecimal) => {
         throw "Input has to be a positive number !";
     }
     let hours = Math.floor(timeInDecimal);
-    let hoursStr = Math.floor(timeInDecimal).toString();
     let minutes = Math.round((timeInDecimal - hours) * 60);
-    let minutesStr = minutes.toString();
-    if (hours < 10)
-        hoursStr = "0" + hours;
-    if (minutes < 10)
-        minutesStr = "0" + minutes;
-    return hoursStr + ":" + minutesStr;
+    return {
+        hours,
+        minutes,
+    };
 };
 exports.getDecimalToHoursAndMinutes = getDecimalToHoursAndMinutes;
 /**
@@ -254,3 +151,103 @@ const getUnitRatioOfNb1ToNb2 = (nb1, nb2) => {
     return `1:${Number(nb2 / nb1).toFixed(2)}`;
 };
 exports.getUnitRatioOfNb1ToNb2 = getUnitRatioOfNb1ToNb2;
+/**
+ *
+ * checks if input nb1 is a factor of input nb2
+ *
+ * @param {number} nb1 the possible factor to check
+ * @param {number} nb2 the number to check
+ * @return {boolean} returns true if nb1 is a factor of nb2
+ *
+ */
+const isFactor = (nb1, nb2) => {
+    // 0 cannot be a factor of any number except for 0
+    if (nb2 === 0 && nb1 === 0) {
+        return true;
+    }
+    return (Number.isInteger(nb1) && Number.isInteger(nb2) && nb1 > 0 && nb2 % nb1 === 0);
+};
+exports.isFactor = isFactor;
+/**
+ *
+ * checks if a number is an even number
+ *
+ * @param {number} nb the number to check
+ * @return {boolean} if the number is an even number
+ *
+ */
+const isEven = (nb) => {
+    return (0, exports.isFactor)(2, nb);
+};
+exports.isEven = isEven;
+/**
+ *
+ * checks if input nb1 is a multiple of input nb2
+ *
+ * @param {number} nb1 the possible multiple to check
+ * @param {number} nb2 the possible factor to check
+ * @return {boolean} returns true if nb1 is a multiple of nb2
+ *
+ */
+const isMultiple = (nb1, nb2) => {
+    return (0, exports.isFactor)(nb2, nb1);
+};
+exports.isMultiple = isMultiple;
+/**
+ *
+ * checks if a number is a natural number
+ *
+ * a natural number is any positive integer > 0
+ *
+ * @param {number} nb the number to check
+ * @return {boolean} if the number is a natural number
+ *
+ */
+const isNaturalNumber = (nb) => {
+    return nb > 0 && Number.isInteger(nb);
+};
+exports.isNaturalNumber = isNaturalNumber;
+/**
+ *
+ * checks if a number is a prime number,
+ *
+ * a prime number is a natural number that has exactly two factors,
+ * meaning it is only divisible by 1 and itself
+ *
+ * @param {number} nb the number to check, will return false if no number
+ * @return {boolean} if the number is a natural number
+ *
+ */
+const isPrime = (nb) => {
+    if ((0, exports.isNaturalNumber)(nb)) {
+        // 1 is not a prime number
+        if (nb === 1)
+            return false;
+        // every even number that is not 2 is not prime
+        if (nb > 2 && (0, exports.isEven)(nb))
+            return false;
+        /**
+         *  if nb is a multiple of 5, it is not prime
+         *  we add this common check for performance reason because it helps us avoid some loop iterations
+         * */
+        if (nb > 5 && (0, exports.isMultiple)(nb, 5))
+            return false;
+        /**
+         *  every natural number has at least 2 factors, 1 and itself
+         *  this is why we start the counter at 2 in the below loop
+         * */
+        let numberOfFactors = 2;
+        for (let i = 2; i < nb; i++) {
+            // there's no need to continue the loop if we already have more than 2 factors
+            if (numberOfFactors > 2)
+                break;
+            if ((0, exports.isFactor)(i, nb)) {
+                numberOfFactors++;
+            }
+        }
+        // checking primality by assessing that number of factors is still 2 after the loop
+        return numberOfFactors === 2;
+    }
+    return false;
+};
+exports.isPrime = isPrime;

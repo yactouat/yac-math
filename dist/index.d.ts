@@ -11,67 +11,15 @@
 export declare const factorial: (nb: number) => number;
 /**
  *
- * checks if input nb1 is a factor of input nb2
- *
- * @param {number} nb1 the possible factor to check
- * @param {number} nb2 the number to check
- * @return {boolean} returns true if nb1 is a factor of nb2
- *
- */
-export declare const isFactor: (nb1: number, nb2: number) => boolean;
-/**
- *
- * checks if a number is an even number
- *
- * @param {number} nb the number to check
- * @return {boolean} if the number is an even number
- *
- */
-export declare const isEven: (nb: number) => boolean;
-/**
- *
- * checks if input nb1 is a multiple of input nb2
- *
- * @param {number} nb1 the possible multiple to check
- * @param {number} nb2 the possible factor to check
- * @return {boolean} returns true if nb1 is a multiple of nb2
- *
- */
-export declare const isMultiple: (nb1: number, nb2: number) => boolean;
-/**
- *
- * checks if a number is a natural number
- *
- * a natural number is any positive integer > 0
- *
- * @param {number} nb the number to check
- * @return {boolean} if the number is a natural number
- *
- */
-export declare const isNaturalNumber: (nb: number) => boolean;
-/**
- *
- * checks if a number is a prime number,
- *
- * a prime number is a natural number that has exactly two factors,
- * meaning it is only divisible by 1 and itself
- *
- * @param {number} nb the number to check, will return false if no number
- * @return {boolean} if the number is a natural number
- *
- */
-export declare const isPrime: (nb: number) => boolean;
-/**
- *
  * gets a string representation, in hours and minutes, of a decimal number
  *
  * @param {number} timeInDecimal
  *
- * @return {string} the hours:minutes string representation of the input decimal number
+ * @return {number} the hours:minutes representation of the input decimal number
  * @throws "Input has to be a positive number !"
  *
  */
-export declare const getDecimalToHoursAndMinutes: (timeInDecimal: number) => string;
+export declare const getDecimalToHoursAndMinutes: (timeInDecimal: number) => HoursMinutes;
 /**
  *
  * gets what percentage of nb2 represents nb1;
@@ -122,3 +70,62 @@ export declare const getUniquePrimeFactors: (nb: number) => number[];
  *
  */
 export declare const getUnitRatioOfNb1ToNb2: (nb1: number, nb2: number) => string;
+/**
+ * represents what a time in hours and minutes looks like
+ */
+export interface HoursMinutes {
+    hours: number;
+    minutes: number;
+}
+/**
+ *
+ * checks if input nb1 is a factor of input nb2
+ *
+ * @param {number} nb1 the possible factor to check
+ * @param {number} nb2 the number to check
+ * @return {boolean} returns true if nb1 is a factor of nb2
+ *
+ */
+export declare const isFactor: (nb1: number, nb2: number) => boolean;
+/**
+ *
+ * checks if a number is an even number
+ *
+ * @param {number} nb the number to check
+ * @return {boolean} if the number is an even number
+ *
+ */
+export declare const isEven: (nb: number) => boolean;
+/**
+ *
+ * checks if input nb1 is a multiple of input nb2
+ *
+ * @param {number} nb1 the possible multiple to check
+ * @param {number} nb2 the possible factor to check
+ * @return {boolean} returns true if nb1 is a multiple of nb2
+ *
+ */
+export declare const isMultiple: (nb1: number, nb2: number) => boolean;
+/**
+ *
+ * checks if a number is a natural number
+ *
+ * a natural number is any positive integer > 0
+ *
+ * @param {number} nb the number to check
+ * @return {boolean} if the number is a natural number
+ *
+ */
+export declare const isNaturalNumber: (nb: number) => boolean;
+/**
+ *
+ * checks if a number is a prime number,
+ *
+ * a prime number is a natural number that has exactly two factors,
+ * meaning it is only divisible by 1 and itself
+ *
+ * @param {number} nb the number to check, will return false if no number
+ * @return {boolean} if the number is a natural number
+ *
+ */
+export declare const isPrime: (nb: number) => boolean;
