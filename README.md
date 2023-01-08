@@ -17,18 +17,19 @@ helper functions math library
 
 #### returns Array
 
-- `getUniquePrimeFactors( value )` => returns a list of unique prime factors for the given input value
-- `getPrimeFactorization( value )` => returns a list of prime factors for the given input value, their product is equal to the input value
+- `getUniquePrimeFactors(nb)` => returns a list of unique prime factors for the given input value
+- `getPrimeFactorization(nb)` => returns a list of prime factors for the given input value, their product is equal to the input value
 
 #### returns boolean
 
 - `isFactor(nb1, nb2)` => checks if input nb1 is a factor of input nb2
-- `isEven( value )`
-- `isNaturalNumber( value )`
-- `isPrime( value )`
+- `isEven(nb)`
+- `isNaturalNumber(nb)`
+- `isPrime(nb)`
 
 #### returns Number
 
+- `factorial(nb)` => returns the factorial of the given input nb
 - `getPercentageRepresentation(nb1, nb2)` => gets what percentage of nb2 represents nb1
 
 #### returns String
@@ -71,7 +72,14 @@ getPercentageRepresentation(2, 4); // => 50
 
 A big thanks goes to the contributors of this project:
 
-- yactouat: [![yactouat](https://avatars.githubusercontent.com/u/37403808?v=4 "yactouat's profile pic")](https://github.com/yactouat)
-- petropok: [![petropok](https://avatars.githubusercontent.com/u/50425732?v=4 "petropok's profile pic")](https://github.com/petropok)
-- av-feaster: [![av-feaster](https://avatars.githubusercontent.com/u/66401256?v=4 "av-feaster's profile pic")](https://github.com/av-feaster)
-- Notkirito18: [![Notkirito18](https://avatars.githubusercontent.com/u/88578935?v=4 "Notkirito18's profile pic")](https://github.com/Notkirito18)
+<table>
+<tbody>
+    <tr>
+        <td align="center"><a href="https://github.com/yactouat"><img src="https://avatars.githubusercontent.com/u/37403808?v=4" width="100px;" alt="yactouat"/><br /><sub><b>Yactouat</b></sub></a><br /><a href="https://github.com/yactouat"></td>
+        <td align="center"><a href="https://github.com/petropok"><img src="https://avatars.githubusercontent.com/u/50425732?v=4" width="100px;" alt="petropok"/><br /><sub><b>petropok</b></sub></a><br /><a href="https://github.com/petropok"></td>
+        <td align="center"><a href="https://github.com/av-feaster"><img src="https://avatars.githubusercontent.com/u/66401256?v=4" width="100px;" alt="av-feaster"/><br /><sub><b>av-feaster</b></sub></a><br /><a href="https://github.com/av-feaster"></td>
+        <td align="center"><a href="https://github.com/Notkirito18"><img src="https://avatars.githubusercontent.com/u/88578935?v=4" width="100px;" alt="Notkirito18"/><br /><sub><b>Notkirito18</b></sub></a><br /><a href="https://github.com/Notkirito18"></td>
+        <td align="center"><a href="https://github.com/dejanko25"><img src="https://avatars.githubusercontent.com/u/92360957?v=4" width="100px;" alt="dejanko25"/><br /><sub><b>dejanko25</b></sub></a><br /><a href="https://github.com/dejanko25"></td>
+    </tr>
+</tbody>
+</table>

@@ -80,27 +80,24 @@ describe("number is prime", () => {
     { input: 2, expected: true },
     { input: 3, expected: true },
     { input: 5, expected: true },
-    { input: 11, expected: true },
-    { input: 15, expected: false },
-    { input: 20, expected: false },
-    { input: 100, expected: false },
-    { input: 45, expected: false },
-    { input: 63, expected: false },
-    { input: 73, expected: true },
-    { input: 19, expected: true },
     { input: 7, expected: true },
-    { input: 5, expected: true },
-    { input: 71, expected: true },
-    { input: 17, expected: true },
-    { input: 29, expected: true },
-    { input: 41, expected: true },
-    { input: 97, expected: true },
-    { input: 47, expected: true },
-    { input: 31, expected: true },
     { input: 11, expected: true },
     { input: 13, expected: true },
+    { input: 15, expected: false },
+    { input: 17, expected: true },
+    { input: 19, expected: true },
+    { input: 20, expected: false },
+    { input: 29, expected: true },
+    { input: 31, expected: true },
+    { input: 41, expected: true },
+    { input: 45, expected: false },
+    { input: 47, expected: true },
+    { input: 63, expected: false },
+    { input: 71, expected: true },
+    { input: 73, expected: true },
+    { input: 97, expected: true },
+    { input: 100, expected: false },
     // testing performance and loop iterations skipping with multiples of 5 on a very large number
-    { input: 949849845316494994989811984984983, expected: false },
     { input: 949849845316494994989811984984980, expected: false },
   ];
   jestTheories.default(
@@ -119,15 +116,16 @@ describe("prime factorization", () => {
     { input: 0, expected: [] },
     { input: 1, expected: [] },
     { input: 1.35, expected: [] },
-    { input: 25.899, expected: [] },
-    { input: 75, expected: [3, 5, 5] },
-    { input: 36, expected: [2, 2, 3, 3] },
-    { input: 30, expected: [2, 3, 5] },
-    { input: 73, expected: [73] },
-    { input: 126, expected: [2, 3, 3, 7] },
     { input: 12, expected: [2, 2, 3] },
     { input: 18, expected: [2, 3, 3] },
+    { input: 20, expected: [2, 2, 5] },
     { input: 24, expected: [2, 2, 2, 3] },
+    { input: 25.899, expected: [] },
+    { input: 30, expected: [2, 3, 5] },
+    { input: 36, expected: [2, 2, 3, 3] },
+    { input: 73, expected: [73] },
+    { input: 75, expected: [3, 5, 5] },
+    { input: 126, expected: [2, 3, 3, 7] },
   ];
   jestTheories.default(
     "the prime factorization of {input} is {expected}",
@@ -215,8 +213,8 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
   describe("ratio when nb1 is bigger than nb2", () => {
     const theories = [
       { input: [3, 2], expected: "1:0.67" },
-      { input: [24, 4], expected: "1:0.17" },
       { input: [24, 3], expected: "1:0.13" },
+      { input: [24, 4], expected: "1:0.17" },
     ];
     jestTheories.default(
       "ratio between {input} is {expected} for 1 unit of nb1",
@@ -234,9 +232,10 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
 
   describe("ratio when nb1 is smaller than nb2", () => {
     const theories = [
-      { input: [3, 24], expected: "1:8.00" },
       { input: [2, 3], expected: "1:1.50" },
+      { input: [3, 24], expected: "1:8.00" },
       { input: [4, 24], expected: "1:6.00" },
+      { input: [5, 30], expected: "1:6.00" },
     ];
     jestTheories.default(
       "ratio between {input} is {expected} for 1 unit of nb1",
