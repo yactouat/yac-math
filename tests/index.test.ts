@@ -11,6 +11,7 @@ import {
   isNaturalNumber,
   isPrime,
   factorial,
+  HoursMinutes,
 } from "./../src/index";
 
 describe("value is a multiple", () => {
@@ -386,14 +387,32 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
 
   describe("get hours/minutes with hours less than 10", () => {
     const theories = [
-      { input: 1.5, expected: "01:30" },
-      { input: 1.25, expected: "01:15" },
-      { input: 1.75, expected: "01:45" },
+      {
+        input: 1.5,
+        expected: {
+          hours: 1,
+          minutes: 30,
+        },
+      },
+      {
+        input: 1.25,
+        expected: {
+          hours: 1,
+          minutes: 15,
+        },
+      },
+      {
+        input: 1.75,
+        expected: {
+          hours: 1,
+          minutes: 45,
+        },
+      },
     ];
     jestTheories.default(
       "hours and minutes representation of {input} is expected to be {expected}",
       theories,
-      (theory: { input: number; expected: string }) => {
+      (theory: { input: number; expected: HoursMinutes }) => {
         expect(getDecimalToHoursAndMinutes(theory.input)).toEqual(
           theory.expected
         );
@@ -403,14 +422,32 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
 
   describe("get hours/minutes with less than an hour", () => {
     const theories = [
-      { input: 0.5, expected: "00:30" },
-      { input: 0.25, expected: "00:15" },
-      { input: 0.75, expected: "00:45" },
+      {
+        input: 0.5,
+        expected: {
+          hours: 0,
+          minutes: 30,
+        },
+      },
+      {
+        input: 0.25,
+        expected: {
+          hours: 0,
+          minutes: 15,
+        },
+      },
+      {
+        input: 0.75,
+        expected: {
+          hours: 0,
+          minutes: 45,
+        },
+      },
     ];
     jestTheories.default(
       "hours and minutes representation of {input} is expected to be {expected}",
       theories,
-      (theory: { input: number; expected: string }) => {
+      (theory: { input: number; expected: HoursMinutes }) => {
         expect(getDecimalToHoursAndMinutes(theory.input)).toEqual(
           theory.expected
         );
@@ -420,14 +457,32 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
 
   describe("get hours/minutes with whole numbers", () => {
     const theories = [
-      { input: 1, expected: "01:00" },
-      { input: 2, expected: "02:00" },
-      { input: 3, expected: "03:00" },
+      {
+        input: 1,
+        expected: {
+          hours: 1,
+          minutes: 0,
+        },
+      },
+      {
+        input: 2,
+        expected: {
+          hours: 2,
+          minutes: 0,
+        },
+      },
+      {
+        input: 3,
+        expected: {
+          hours: 3,
+          minutes: 0,
+        },
+      },
     ];
     jestTheories.default(
       "hours and minutes representation of {input} is expected to be {expected}",
       theories,
-      (theory: { input: number; expected: string }) => {
+      (theory: { input: number; expected: HoursMinutes }) => {
         expect(getDecimalToHoursAndMinutes(theory.input)).toEqual(
           theory.expected
         );
@@ -437,14 +492,20 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
 
   describe("get hours/minutes with hours starting 10", () => {
     const theories = [
-      { input: 11.5, expected: "11:30" },
-      { input: 23.25, expected: "23:15" },
-      { input: 120.75, expected: "120:45" },
+      {
+        input: 11.5,
+        expected: {
+          hours: 11,
+          minutes: 30,
+        },
+      },
+      { input: 23.25, expected: { hours: 23, minutes: 15 } },
+      { input: 120.75, expected: { hours: 120, minutes: 45 } },
     ];
     jestTheories.default(
       "hours and minutes representation of {input} is expected to be {expected}",
       theories,
-      (theory: { input: number; expected: string }) => {
+      (theory: { input: number; expected: HoursMinutes }) => {
         expect(getDecimalToHoursAndMinutes(theory.input)).toEqual(
           theory.expected
         );
@@ -497,7 +558,7 @@ describe("factorial of a number", () => {
       expect(factorial(theory.input as number)).toBe(theory.expected);
     }
   );
-  
+
   test("cant get factorial for negative numbers", () => {
     const testFactorial = () => {
       factorial(-1);
@@ -506,7 +567,7 @@ describe("factorial of a number", () => {
       "Factorial for negative numbers is undefined!"
     );
   });
-  
+
   test("cant get factorial for decimal numbers", () => {
     const testFactorial = () => {
       factorial(17.5);
