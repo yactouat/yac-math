@@ -1,4 +1,4 @@
-name: jest tests + ts build to js
+name: CI
 
 on:
   push:
@@ -20,7 +20,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
       - run: npm test
 
   build:
@@ -31,11 +30,6 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3
-      - name: Typescript (tsc) Build/Push
-        uses: FuLagann/tsc-build-push@v1
-        with:
-          user-name: "Yacine Touati"
-          user-email: "yacine.touati.pro@gmail.com"
-          message: "building Typescript thanks to https://github.com/marketplace/actions/typescript-tsc-build-push"
-          directories: ./
+      - run: npm run build
+      - run: git add .
+      - run: git commit -m "tsc build for ${GITHUB_REF#refs/heads/}.${GITHUB_SHA}"
