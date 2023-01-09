@@ -26,11 +26,15 @@ jobs:
   build:
     needs: jest_tests
     runs-on: ubuntu-latest
+    name: Build Typescript to Javascript
+    strategy:
+      matrix:
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
-      - name: Building Typescript
-        uses: FuLagann/tsc-build@v1
+      - name: Typescript (tsc) Build/Push
+        uses: FuLagann/tsc-build-push@v1
         with:
           user-name: "Yacine Touati"
           user-email: "yacine.touati.pro@gmail.com"
-          message: "build tpyescript to js GitHub Action"
+          message: "building Typescript thanks to https://github.com/marketplace/actions/typescript-tsc-build-push"
