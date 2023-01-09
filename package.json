@@ -1,6 +1,6 @@
 {
   "name": "yac-math",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "description": "helper functions math library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,9 +11,10 @@
   },
   "keywords": [
     "math",
-    "primes",
+    "percentage",
     "helpers",
-    "percentage"
+    "factors",
+    "primes"
   ],
   "author": "Yacine Touati <yacine.touati.pro@gmail.com>",
   "contributors": [

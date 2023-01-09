@@ -1,8 +1,31 @@
 # yac-math
 
+<!-- TOC -->
+
+- [yac-math](#yac-math)
+  - [what is this ?](#what-is-this-)
+  - [DISCLAIMER](#disclaimer)
+  - [pre requisites](#pre-requisites)
+  - [basic usage](#basic-usage)
+    - [available methods](#available-methods)
+      - [returns array](#returns-array)
+      - [returns boolean](#returns-boolean)
+      - [returns number](#returns-number)
+      - [returns object](#returns-object)
+      - [returns string](#returns-string)
+    - [importing and using](#importing-and-using)
+  - [CI/CD](#cicd)
+  - [Contributors](#contributors)
+
+<!-- /TOC -->
+
 ## what is this ?
 
 helper functions math library
+
+## DISCLAIMER
+
+PLEASE DO NOT USE ANY VERSION PRIOR TO 3.1.5 AS THEY ARE NOT STABLE (I WAS MESSING AROUND TRYING TO FIND A GOOD WORKFLOW FOR CI/CD) !
 
 ## pre requisites
 
@@ -54,27 +77,13 @@ isPrime(5); // => true
 getPercentageRepresentation(2, 4); // => 50
 ```
 
-## useful commands
+## CI/CD
 
-### build
-
-`npm run build` => compiles the code and puts it in the `dist` folder with the setting `es2016` as target.
-
-### test
-
-`npm install` ...
-
-`npm run test` => runs the jest tests. Tests contain theories.
-
-### publish
-
-`npm run build` => builds the js code and puts into the `dist` folder...
-
-`npm publish` => publishes the package to npm
+testing with jest, building with tsc, and publishing to NPM are all automated using Github Actions
 
 ## Contributors
 
-A big thanks goes to the contributors of this project:
+a big thanks goes to the contributors of this project:
 
 <table>
 <tbody>

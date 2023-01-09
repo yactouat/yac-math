@@ -1,0 +1,22 @@
+name: CD
+
+on:
+  # this action will only run if you create a release
+  release:
+    types: [created]
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    name: publish to NPM
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          registry-url: "https://registry.npmjs.org"
+          cache: "npm"
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
