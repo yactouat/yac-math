@@ -9,23 +9,24 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
-    name: Jest tests + Typescript build
+    name: Jest tests + Typescript build + push to PR branch
     strategy:
       matrix:
         node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
-      - name: tests and build with Node.js ${{ matrix.node-version }}
+      - name: tests + build with Node.js ${{ matrix.node-version }} then push to PR branch
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
       - run: npm run test
+      - run: git config --global user.email "yacine.touati.pro@gmail.com"
+      - run: git config --global user.name "Yacine Touati"
+      - run: git checkout ${GITHUB_HEAD_REF}
       - run: npm run build
       - run: echo "tsc build for ${GITHUB_REF#refs/heads/}.${GITHUB_SHA}" > latest_build.txt
       - run: git add .
-      - run: git config --global user.email "yacine.touati.pro@gmail.com"
-      - run: git config --global user.name "Yacine Touati"
       - run: git commit -m "tsc build for ${GITHUB_REF#refs/heads/}.${GITHUB_SHA}"
-      - run: git push origin:${GITHUB_HEAD_REF}
+      - run: git push
