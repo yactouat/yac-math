@@ -129,3 +129,17 @@ export declare const isNaturalNumber: (nb: number) => boolean;
  *
  */
 export declare const isPrime: (nb: number) => boolean;
+/**
+ * returns all combinations of factors for the given number
+ *
+ * but [n1, n2] = [n2, n1] and only one is included
+ * consider all factors generated in the same order as below example for 64
+ * [ [64, 1], [ 32, 2 ], [ 16, 4 ], [ 8, 8 ], [ 4, 16 ], [ 2, 32 ], [ 1, 64 ] ]
+ * we will always only keep the right side, starting with the last unique combination
+ * so our output for 64 will be [ [ 8, 8 ], [ 4, 16 ], [ 2, 32 ], [ 1, 64 ] ]
+ *
+ * @param {number} nb we will look for factors of this number
+ *
+ * @return {number[][]} factor combinations
+ */
+export declare const getAllFactorizations: (nb: number) => number[][];

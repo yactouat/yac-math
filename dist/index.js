@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isPrime = exports.isNaturalNumber = exports.isMultiple = exports.isEven = exports.isFactor = exports.getUnitRatioOfNb1ToNb2 = exports.getUniquePrimeFactors = exports.getPrimeFactorization = exports.getPercentageRepresentation = exports.getDecimalToHoursAndMinutes = exports.factorial = void 0;
+exports.getAllFactorizations = exports.isPrime = exports.isNaturalNumber = exports.isMultiple = exports.isEven = exports.isFactor = exports.getUnitRatioOfNb1ToNb2 = exports.getUniquePrimeFactors = exports.getPrimeFactorization = exports.getPercentageRepresentation = exports.getDecimalToHoursAndMinutes = exports.factorial = void 0;
 /**
  * returns factorial of the given number
  *
@@ -177,7 +177,7 @@ exports.isFactor = isFactor;
  *
  */
 const isEven = (nb) => {
-    return (0, exports.isFactor)(2, nb);
+    return (nb % 2 == 0);
 };
 exports.isEven = isEven;
 /**
@@ -251,3 +251,60 @@ const isPrime = (nb) => {
     return false;
 };
 exports.isPrime = isPrime;
+/**
+ * returns all combinations of factors for the given number
+ *
+ * but [n1, n2] = [n2, n1] and only one is included
+ * consider all factors generated in the same order as below example for 64
+ * [ [64, 1], [ 32, 2 ], [ 16, 4 ], [ 8, 8 ], [ 4, 16 ], [ 2, 32 ], [ 1, 64 ] ]
+ * we will always only keep the right side, starting with the last unique combination
+ * so our output for 64 will be [ [ 8, 8 ], [ 4, 16 ], [ 2, 32 ], [ 1, 64 ] ]
+ *
+ * @param {number} nb we will look for factors of this number
+ *
+ * @return {number[][]} factor combinations
+ */
+const getAllFactorizations = (nb) => {
+    let result = [];
+    if (nb % 1 != 0)
+        throw "Factorization for decimal numbers is undefined!";
+    if (nb > 1) {
+        // only check for the first half of numbers, saves time  
+        let checker = Math.trunc((nb / 2));
+        while (checker > 0) {
+            if (nb % checker === 0) {
+                result.push([checker, (nb / checker)]);
+            }
+            checker--;
+        }
+        // the part below makes sure we don't repeat factor combinations, since [n1, n2] is same as [n2, n1]
+        if (result.length > 2) {
+            result = result.slice(-((result.length / 2) + 1));
+        }
+    }
+    // implementation for negative numbers  
+    else if (nb < -1) {
+        let checker = Math.trunc((nb / 2)) * (-1);
+        while (checker > 0) {
+            if (nb % checker === 0) {
+                result.push([checker, (nb / checker)]);
+                result.push([(checker * (-1)), ((nb / checker) * (-1))]);
+            }
+            checker--;
+        }
+        // the part below makes sure we don't repeat factor combinations, [n1, n2] = [n2, n1]   
+        let slicer = ((result.length / 2) % 2) === 0;
+        if (slicer) {
+            result = result.slice(-((result.length / 2) + 2));
+        }
+        else {
+            result = result.slice(-((result.length / 2) + 1));
+        }
+        // [n1, -n1] and [-n1, n1] are the same, so we only want to keep one of those
+        if (result[0][0] == result[1][1]) {
+            result = result.slice(-(result.length - 1));
+        }
+    }
+    return result;
+};
+exports.getAllFactorizations = getAllFactorizations;
