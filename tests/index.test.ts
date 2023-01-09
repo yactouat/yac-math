@@ -409,6 +409,13 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
           minutes: 45,
         },
       },
+      { 
+        input: 1.33, 
+        expected: {
+          hours: 1,
+          minutes: 20,
+        },
+      }
     ];
     jestTheories.default(
       "hours and minutes representation of {input} is expected to be {expected}",
@@ -444,6 +451,14 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
           minutes: 45,
         },
       },
+      {
+        input: 0.44,
+        expected: {
+          hours: 0,
+          minutes: 26,
+        },
+      },
+      
     ];
     jestTheories.default(
       "hours and minutes representation of {input} is expected to be {expected}",
@@ -479,6 +494,13 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
           minutes: 0,
         },
       },
+      {
+        input: 245,
+        expected: {
+          hours: 245,
+          minutes: 0,
+        },
+      },
     ];
     jestTheories.default(
       "hours and minutes representation of {input} is expected to be {expected}",
@@ -500,8 +522,27 @@ describe("ratio of 1 nb1 unit to n units of nb2", () => {
           minutes: 30,
         },
       },
-      { input: 23.25, expected: { hours: 23, minutes: 15 } },
-      { input: 120.75, expected: { hours: 120, minutes: 45 } },
+      {
+        input: 23.25,
+        expected: {
+          hours: 23,
+          minutes: 15,
+        },
+      },
+      {
+        input: 120.75,
+        expected: {
+          hours: 120,
+          minutes: 45,
+        },
+      },
+      {
+        input: 120.188,
+        expected: {
+          hours: 120,
+          minutes: 11,
+        },
+      },
     ];
     jestTheories.default(
       "hours and minutes representation of {input} is expected to be {expected}",
