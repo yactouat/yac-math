@@ -28,4 +28,4 @@ jobs:
       - run: git config --global user.email "yacine.touati.pro@gmail.com"
       - run: git config --global user.name "Yacine Touati"
       - run: git commit -m "tsc build for ${GITHUB_REF#refs/heads/}.${GITHUB_SHA}"
-      - run: git push
+      - run: git push origin:${GITHUB_HEAD_REF}
