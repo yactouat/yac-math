@@ -253,7 +253,12 @@ export const isPrime = (nb: number): boolean => {
 
 /**
  * returns all combinations of factors for the given number
+ *
  * but [n1, n2] = [n2, n1] and only one is included
+ * consider all factors generated in the same order as below example for 64
+ * [ [64, 1], [ 32, 2 ], [ 16, 4 ], [ 8, 8 ], [ 4, 16 ], [ 2, 32 ], [ 1, 64 ] ]
+ * we will always only keep the right side, starting with the last unique combination
+ * so our output for 64 will be [ [ 8, 8 ], [ 4, 16 ], [ 2, 32 ], [ 1, 64 ] ]
  *
  * @param {number} nb we will look for factors of this number
  *
@@ -261,9 +266,10 @@ export const isPrime = (nb: number): boolean => {
  */
 export const getAllFactorizations = (nb: number): number[][] => {
   let result: number[][] = [];
-  if ( (nb > 1) && (nb % 1 == 0) ) {
+  if (nb % 1 != 0) throw "Factorization for decimal numbers is undefined!";
+  if (nb > 1) {
 // only check for the first half of numbers, saves time  
-    let checker = ~~(nb / 2);
+    let checker = Math.trunc((nb / 2))
     while (checker > 0) {
       if (nb % checker === 0) {
         result.push([checker, (nb / checker)]);
@@ -276,8 +282,8 @@ export const getAllFactorizations = (nb: number): number[][] => {
     }
   }
 // implementation for negative numbers  
-  else if ( (nb < -1) && (nb % 1 == 0) ) {
-    let checker = ~~((nb / (-2)));
+  else if (nb < -1) {
+    let checker = Math.trunc((nb/2)) * (-1)
     while (checker > 0) {
       if (nb % checker === 0) {
         result.push([checker, (nb / checker)]);
