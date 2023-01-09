@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: tests + build with Node.js ${{ matrix.node-version }} then push to PR branch
         uses: actions/setup-node@v3
         with:
