@@ -17,6 +17,7 @@ helper functions math library
 
 #### returns array
 
+- `getAllFactorizations(nb)` => returns a list of all factorizations for the given input value as unique pairs of factors
 - `getUniquePrimeFactors(nb)` => returns a list of unique prime factors for the given input value
 - `getPrimeFactorization(nb)` => returns a list of prime factors for the given input value, their product is equal to the input value
 

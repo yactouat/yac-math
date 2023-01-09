@@ -1,6 +1,6 @@
 {
   "name": "yac-math",
-  "version": "3.0.2",
+  "version": "3.1.2",
   "description": "helper functions math library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,6 +30,10 @@
     {
       "name": "Notkirito18",
       "url": "https://github.com/Notkirito18"
+    },
+    {
+      "name": "dejanko25",
+      "url": "https://github.com/dejanko25"
     }
   ],
   "license": "MIT",
