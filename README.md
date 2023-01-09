@@ -4,6 +4,7 @@
 
 - [yac-math](#yac-math)
   - [what is this ?](#what-is-this-)
+  - [DISCLAIMER](#disclaimer)
   - [pre requisites](#pre-requisites)
   - [basic usage](#basic-usage)
     - [available methods](#available-methods)
@@ -21,6 +22,10 @@
 ## what is this ?
 
 helper functions math library
+
+## DISCLAIMER
+
+PLEASE DO NOT USE ANY VERSION PRIOR TO 3.1.5 AS THEY ARE NOT STABLE (I WAS MESSING AROUND TRYING TO FIND A GOOD WORKFLOW FOR CI/CD) !
 
 ## pre requisites
 
