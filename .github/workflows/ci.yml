@@ -7,30 +7,21 @@ on:
     branches: ["master"]
 
 jobs:
-  jest_tests:
+  ci:
     runs-on: ubuntu-latest
-    name: Jest tests
+    name: Jest tests + Typescript build
     strategy:
       matrix:
         node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
-      - name: Tests with Node.js ${{ matrix.node-version }}
+      - name: tests and build with Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
       - run: npm run test
-
-  build:
-    needs: jest_tests
-    runs-on: ubuntu-latest
-    name: Build Typescript to Javascript
-    strategy:
-      matrix:
-        node-version: [18.x]
-    steps:
       - run: npm run build
       - run: git add .
       - run: git commit -m "tsc build for ${GITHUB_REF#refs/heads/}.${GITHUB_SHA}"
