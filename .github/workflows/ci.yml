@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: ["master", "issue_50"]
+    branches: ["master"]
   pull_request:
     branches: ["master"]
 
@@ -23,6 +23,7 @@ jobs:
       - run: npm ci
       - run: npm run test
       - run: npm run build
+      - run: echo "tsc build for ${GITHUB_REF#refs/heads/}.${GITHUB_SHA}" > latest_build.txt
       - run: git add .
       - run: git config --global user.email "yacine.touati.pro@gmail.com"
       - run: git config --global user.name "Yacine Touati"
