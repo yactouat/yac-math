@@ -15,6 +15,7 @@
       - [returns string](#returns-string)
     - [importing and using](#importing-and-using)
   - [CI/CD](#cicd)
+  - [Contribution guidelines](#contribution-guidelines)
   - [Contributors](#contributors)
 
 <!-- /TOC -->
@@ -79,7 +80,22 @@ getPercentageRepresentation(2, 4); // => 50
 
 ## CI/CD
 
-testing with jest, building with tsc, and publishing to NPM are all automated using Github Actions
+testing with jest, building with tsc, and publishing to NPM are all automated using Github Actions under the `.github/workflows` folder;
+
+the testing and building part happens whenever a pull request is created or updated, be aware that a file tracking the last build commit SHA is used to facilitate auto push, so dont be surprised if you need to pull again before pushing your work on a PR;
+
+the publishing to NPM part happens whenever a new release is created on Github
+
+## Contribution guidelines
+
+dear past, present, and future contributors, you have my many thanks, but please follow these guidelines:
+
+- please use comments to explain your code, even if it's obvious to you, it might not be to someone else
+- please test your code thourougly in the the `./tests` folder
+- you are free to arrange the code, the folder structure, the file names, etc. as you see fit if you're able to provide a good reason for it
+- if you're introducing a breaking change in the usage of this lib, please notify me in the PR so I can update the version number accordingly
+
+that's all, thank you for your time !
 
 ## Contributors
 
