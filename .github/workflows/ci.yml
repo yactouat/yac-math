@@ -38,3 +38,4 @@ jobs:
           user-name: "Yacine Touati"
           user-email: "yacine.touati.pro@gmail.com"
           message: "building Typescript thanks to https://github.com/marketplace/actions/typescript-tsc-build-push"
+          directories: ./
