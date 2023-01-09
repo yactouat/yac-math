@@ -98,6 +98,7 @@ dear past, present, and future contributors, you have my many thanks, but please
 - please test your code thourougly in the the `./tests` folder
 - you are free to arrange the code, the folder structure, the file names, etc. as you see fit if you're able to provide a good reason for it
 - if you're introducing a breaking change in the usage of this lib, please notify me in the PR so I can update the version number accordingly
+- dont bother building the code, just test it, the CI will build it for you when you PR
 
 that's all, thank you for your time !
 
