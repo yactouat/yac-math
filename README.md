@@ -68,7 +68,9 @@ getPercentageRepresentation(2, 4); // => 50
 
 ### publish
 
-`npm run publish` => builds the js cide abd publishes the package to npm
+`npm run build` => builds the js code and puts into the `dist` folder...
+
+`npm publish` => publishes the package to npm
 
 ## Contributors
 
