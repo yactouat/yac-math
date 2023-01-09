@@ -181,7 +181,7 @@ export const isFactor = (nb1: number, nb2: number): boolean => {
  *
  */
 export const isEven = (nb: number): boolean => {
-  return isFactor(2, nb);
+  return (nb % 2 == 0);
 };
 
 /**
