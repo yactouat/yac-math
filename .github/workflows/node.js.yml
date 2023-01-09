@@ -1,13 +1,13 @@
-name: Node.js tests
+name: jest tests + ts build to js
 
 on:
   push:
-    branches: ["master"]
+    branches: ["master", "issue_50"]
   pull_request:
     branches: ["master"]
 
 jobs:
-  build:
+  jest tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,3 +21,16 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm test
+
+  build:
+    runs-on: ubuntu-latest
+    name: Builds Typescript
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Building Typescript
+        uses: FuLagann/tsc-build@v1
+        with:
+          user-name: "Yacine Touati"
+          user-email: "yacine.touati.pro@gmail.com"
+          message: "build tpyescript to js GitHub Action"
