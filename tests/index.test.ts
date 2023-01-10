@@ -23,9 +23,10 @@ describe("value is a multiple", () => {
     { input: 1, input2: 0, expected: false },
     { input: 1.3, input2: 1, expected: false },
     { input: 500, input2: 5, expected: true },
-    { input: -4, input2: -2, expected: false },
+    { input: -4, input2: -2, expected: true },
     { input: -2, input2: 2, expected: true },
     { input: 2, input2: 4, expected: false },
+    { input: 2.6, input2: 1.3, expected: true }
   ];
   jestTheories.default(
     "the value {input} is a multiple of {input2} => {expected}",
