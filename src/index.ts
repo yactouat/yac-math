@@ -1,4 +1,29 @@
 /**
+ *
+ * TODO re read https://www.mathsisfun.com/binary-number-system.html
+ * TODO write down precisely each step of the logic
+ * TODO implement
+ *
+ * gives you the decimal representation of a binary number
+ *
+ * a binary number is a number made up only of 0s and 1s (base 2)
+ *
+ * @param {string} bin binary number as a string
+ *
+ * @throws "You must provide a binary number!"
+ */
+export const binToInt = (bin: string): number => {
+  // validating user input
+  if (!/^(0|1)+$/.test(bin)) {
+    throw "You must provide a binary number!";
+  }
+  // initialization logic
+  let result = 0;
+  // TODO ...
+  return result;
+};
+
+/**
  * returns factorial of the given number
  *
  * @param {number} nb base of the factorial
