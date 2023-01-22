@@ -23,6 +23,8 @@ export const binToInt = (bin: string): number => {
   return result;
 };
 
+// TODO issue for bin to hex
+
 /**
  * returns factorial of the given number
  *

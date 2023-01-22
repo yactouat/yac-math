@@ -86,7 +86,7 @@ getPercentageRepresentation(2, 4); // => 50
 
 testing with jest, building with tsc, and publishing to NPM are all automated using Github Actions under the `.github/workflows` folder;
 
-the testing and building part happens whenever a pull request is created or updated, be aware that a file tracking the last build commit SHA is used to facilitate auto push, so dont be surprised if you need to pull again before pushing your work on a PR;
+the testing and building part happens whenever a pull request is created or updated
 
 the publishing to NPM part happens whenever a new release is created on Github
 
